@@ -1,0 +1,151 @@
+﻿<Window x:Class="REKENRACE.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:REKENRACE.Views"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="289*" />
+            <RowDefinition Height="80*" />
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Border Background="#2e0791"
+                Grid.ColumnSpan="4"
+                Width="auto"
+                Panel.ZIndex="-20"
+                Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0"
+                       Source="/Models/Images/logo.png"
+                       Margin="-10" />
+
+                <TextBlock Grid.Column="1"
+                           Text="RekenRace"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="White" />
+
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            Margin="0,0,10,0">
+                    <Button Click="Home_Click"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            ToolTip="Ga naar Home"
+                            Height="30">
+                        <TextBlock Text="🏠"
+                                   FontSize="24"
+                                   Foreground="White" />
+                    </Button>
+
+                    <Button Click="Sound_Click"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            ToolTip="Settings voor het geluid"
+                            Height="35">
+                        <TextBlock Text="🔊"
+                                   FontSize="24"
+                                   Foreground="White" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1"
+              Background="LightBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="99*" />
+                <ColumnDefinition Width="101*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Height="200"
+                        Width="300">
+
+                <TextBlock Text="Welkom bij RekenRace!"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="#de1c7e"
+                           Height="100" />
+                <TextBlock x:Name="WelcomeText"
+                           Text="Voer je naam in om te beginnen."
+                           FontSize="20"
+                           Foreground="#2e0791"
+                           Height="45" />
+
+                <Grid>
+                    <TextBox x:Name="NameInput"
+                             Height="40"
+                             FontSize="16"
+                             Padding="5"
+                             BorderBrush="#2e0791"
+                             BorderThickness="2"
+                             VerticalContentAlignment="Center"
+                             TextChanged="NameInput_TextChanged"
+                             Margin="0,0,10,0" />
+
+                    <TextBlock x:Name="PlaceholderText"
+                               Text="Voer je naam in..."
+                               FontSize="16"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,0"
+                               IsHitTestVisible="False" />
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Height="200"
+                        Width="300">
+                <Label Content="Kies je moeilijkheidsgraad:"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="#de1c7e"
+                       Height="100" />
+
+                <ComboBox x:Name="DifficultySelector"
+                          Width="276"
+                          Height="36"
+                          FontSize="16"
+                          Foreground="#2e0791"
+                          BorderBrush="#2e0791"
+                          BorderThickness="2">
+                    <ComboBoxItem Content="Makkelijk" />
+                    <ComboBoxItem Content="Normaal" />
+                    <ComboBoxItem Content="Moeilijk" />
+                </ComboBox>
+                <Button Click="StartGame_Click"
+                        Content="Start Game"
+                        Width="274"
+                        Height="49"
+                        Background="#FF2E0791"
+                        Foreground="White"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        BorderThickness="0" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
