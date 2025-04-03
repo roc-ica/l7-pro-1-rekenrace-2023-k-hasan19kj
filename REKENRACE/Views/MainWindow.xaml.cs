@@ -63,12 +63,6 @@ namespace REKENRACE.Views
             this.Content = gamePage;
         }
 
-
-        private void Sound_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Knop werkt!");
-        }
-
         private void NameInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             PlaceholderText.Visibility = string.IsNullOrWhiteSpace(NameInput.Text) ? Visibility.Visible : Visibility.Collapsed;

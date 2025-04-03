@@ -52,17 +52,6 @@
                                    FontSize="24"
                                    Foreground="White" />
                     </Button>
-
-                    <Button Click="Sound_Click"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            ToolTip="Settings voor het geluid"
-                            Height="35">
-                        <TextBlock Text="🔊"
-                                   FontSize="24"
-                                   Foreground="White" />
-                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

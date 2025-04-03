@@ -63,11 +63,6 @@ namespace REKENRACE.Views
             }
         }
 
-        private void Sound_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Geluid instellingen worden later toegevoegd!");
-        }
-
         private void GenerateQuestion()
         {
             if (questionCount >= totalQuestions)
