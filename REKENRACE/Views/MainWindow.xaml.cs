@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
 
 namespace REKENRACE.Views
 {
@@ -13,9 +15,24 @@ namespace REKENRACE.Views
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Application.Current.MainWindow.Close();
+            Window window = Window.GetWindow(this);
+            if (window != null)
+            {
+                DoubleAnimation fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.5));
+                fadeOut.Completed += (s, a) =>
+                {
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Opacity = 0;
+                    mainWindow.Show();
+
+                    DoubleAnimation fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.5));
+                    mainWindow.BeginAnimation(Window.OpacityProperty, fadeIn);
+
+                    window.Close();
+                };
+
+                window.BeginAnimation(Window.OpacityProperty, fadeOut);
+            }
         }
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
@@ -23,15 +40,20 @@ namespace REKENRACE.Views
             string playerName = NameInput.Text.Trim();
             ComboBoxItem selectedDifficulty = DifficultySelector.SelectedItem as ComboBoxItem;
 
+            // ✅ Eerst de foutmelding verbergen
+            ErrorText.Visibility = Visibility.Collapsed;
+
             if (string.IsNullOrEmpty(playerName))
             {
-                MessageBox.Show("Vul je naam in om te beginnen!", "Fout", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ErrorText.Text = "Vul je naam in om te beginnen!";
+                ErrorText.Visibility = Visibility.Visible;
                 return;
             }
 
             if (selectedDifficulty == null)
             {
-                MessageBox.Show("Kies een moeilijkheidsgraad!", "Fout", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ErrorText1.Text = "Kies een moeilijkheidsgraad!";
+                ErrorText1.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -40,6 +62,7 @@ namespace REKENRACE.Views
             GamePage gamePage = new GamePage(playerName, difficulty);
             this.Content = gamePage;
         }
+
 
         private void Sound_Click(object sender, RoutedEventArgs e)
         {

@@ -12,11 +12,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80*" />
-            <RowDefinition Height="289*" />
+            <RowDefinition Height="250*" />
+            <RowDefinition Height="50*" />
             <RowDefinition Height="80*" />
         </Grid.RowDefinitions>
 
-        <!-- HEADER -->
         <Border Background="#2e0791"
                 Grid.ColumnSpan="4"
                 Width="auto"
@@ -72,8 +72,8 @@
         <Grid Grid.Row="1"
               Background="LightBlue">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="99*" />
-                <ColumnDefinition Width="101*" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="100*" />
             </Grid.ColumnDefinitions>
 
             <StackPanel VerticalAlignment="Center"
@@ -119,14 +119,14 @@
                         HorizontalAlignment="Center"
                         Height="200"
                         Width="300">
-                <Label Content="Kies je moeilijkheidsgraad:"
-                       FontSize="20"
+                <Label Content="Kies je moeilijkheid:"
+                       FontSize="26"
                        FontWeight="Bold"
                        Foreground="#de1c7e"
                        Height="100" />
 
                 <ComboBox x:Name="DifficultySelector"
-                          Width="276"
+                          Width="299"
                           Height="36"
                           FontSize="16"
                           Foreground="#2e0791"
@@ -138,14 +138,66 @@
                 </ComboBox>
                 <Button Click="StartGame_Click"
                         Content="Start Game"
-                        Width="274"
+                        Width="298"
                         Height="49"
                         Background="#FF2E0791"
                         Foreground="White"
                         FontSize="18"
                         FontWeight="Bold"
                         BorderThickness="0" />
+
             </StackPanel>
         </Grid>
+
+        <Grid Grid.Row="2"
+              Background="LightBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock x:Name="ErrorText"
+                           FontSize="18"
+                           FontWeight="DemiBold"
+                           Foreground="Red"
+                           Width="300"
+                           Visibility="Collapsed" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock x:Name="ErrorText1"
+                           FontSize="18"
+                           Width="300"
+                           FontWeight="DemiBold"
+                           Foreground="Red"
+                           Visibility="Collapsed" />
+            </StackPanel>
+        </Grid>    
+
+        <Border Background="White"
+                Grid.Row="3"
+                Width="auto"
+                Panel.ZIndex="-20"
+                Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="🚀 Klaar om te racen vul je naam in "
+                           FontSize="20"
+                           Foreground="DarkBlue"
+                           FontWeight="Black" />
+            </Grid>
+        </Border>
+
     </Grid>
 </Window>
